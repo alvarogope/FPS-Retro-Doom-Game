@@ -58,25 +58,8 @@ FPS-Retro-Doom-Game/
  
 ### Prerequisites
  
-- Python 3.10+
+- Python 3.12
 - pip
- 
-### Installation
- 
-```bash
-# Clone the repository
-git clone https://github.com/alvarogope/FPS-Retro-Doom-Game.git
-cd FPS-Retro-Doom-Game
- 
-# Install dependencies
-pip install pygame
-```
- 
-### Run
- 
-```bash
-python main.py
-```
  
 ### Controls
  
