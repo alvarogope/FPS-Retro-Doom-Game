@@ -19,9 +19,9 @@ A Doom-style raycasting engine built from scratch in Python using Pygame. The en
 
 ## 📸 Preview
 
-![Raycasting Engine - Brick Room](assets/image1.png)
+![Raycasting Engine - Brick Room](assets/Image1.png)
 
-![Raycasting Engine - Sprite Room](assets/image2.png)
+![Raycasting Engine - Sprite Room](assets/Image2.png)
 
 ---
 
