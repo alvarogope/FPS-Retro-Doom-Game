@@ -1,115 +1,98 @@
-# FPS Retro Doom Game
+# Retro FPS Raycasting Engine
  
-A retro-style first-person shooter built in Python using Pygame, inspired by classic 90s FPS games like Doom and Wolfenstein 3D. The game uses raycasting to simulate a 3D environment from a 2D map — the same technique used in the original Doom engine.
+![Python](https://img.shields.io/badge/Python-3776AB?style=flat&logo=python&logoColor=white)
+![Pygame](https://img.shields.io/badge/Pygame-3776AB?style=flat&logo=python&logoColor=white)
+![Status](https://img.shields.io/badge/Status-In%20Development-orange?style=flat)
  
-> **Work in Progress** — This project is actively being developed. Features and structure may change.
+A Doom-style raycasting engine built from scratch in Python using Pygame. The engine renders a 3D perspective view of a 2D map in real time — the same core technique used in classic FPS games like Wolfenstein 3D and Doom. Built as an exercise in understanding the fundamentals of 3D rendering without a game engine.
 
- ---
+---
  
-## Built With
+## ✨ Current Features
  
-- **Python 3.12**
-- **Pygame 2.6**
+- 🎮 **Raycasting Renderer** — Casts rays from the player's viewpoint across a 2D map to produce a real-time 3D perspective view
+- 🧱 **Textured Walls** — Wall surfaces are rendered with textures, scaled by distance to produce a depth effect
+- 🚶 **Player Movement** — First-person movement with rotation and forward/backward navigation
+- 💥 **Collision Detection** — Player cannot walk through walls
+
+---
+
+## 🔨 In Progress
+ 
+- 👾 Sprites and enemies with AI
+- 🔫Weapons
+- 🗺️ Minimap overlay
+- 🔊 Sound effects and Music
+- 💥:Collision detection improvements
+- 🎮Interactive gameplay
+- 🔊 Sound effects and Music
+
+---
+
+## 🏗️ How Raycasting Works
+ 
+The engine uses a technique called **raycasting** — for each vertical column of pixels on screen, a ray is projected from the player's position at a slightly different angle across the field of view. When the ray hits a wall, the distance is used to calculate how tall that wall slice should appear on screen — closer walls appear taller, distant walls appear shorter. Repeating this for every screen column produces the illusion of a 3D environment from a 2D map.
+ 
+This is the exact technique id Software used in Wolfenstein 3D (1992), predating true 3D polygon rendering.
  
 ---
 
-##  Project Structure
+## 🗂️ Project Structure
  
 ```
 FPS-Retro-Doom-Game/
-│
-├── main.py              # Entry point — initialises the game loop
-├── settings.py          # Global constants (screen size, FOV, texture size, etc.)
-├── map.py               # Map layout and world grid
-├── player.py            # Player movement, rotation, and position
-├── raycasting.py        # Raycasting engine — handles 3D projection
-├── object_renderer.py   # Renders walls and textured surfaces
-├── sprite_object.py     # Static and animated sprite objects
-│
-└── resources/
-    └── textures/        # Wall texture files (1.png – 5.png)
+├── main.py               # Game loop, initialisation, and main update/draw cycle
+├── raycasting.py         # Core ray projection and wall rendering logic
+├── object_renderer.py    # Draws wall slices, floor, ceiling, and textures to screen
+├── player.py             # Player position, rotation, movement, and collision
+├── map.py                # 2D grid map definition and wall layout
+├── sprite_object.py      # Sprite rendering (in progress)
+├── settings.py           # Constants — resolution, FOV, speed, colours
+├── resources/            # Textures and assets
+└── README.md
 ```
- 
---- 
 
-## How It Works
- 
-The game uses a **raycasting algorithm** to project a 2D grid map into a pseudo-3D view:
- 
-1. **Map** — A 2D grid defines the world. Each cell value (1–5) maps to a wall texture, and `0` represents empty space.
-2. **Raycasting** — For each vertical screen column, a ray is cast from the player's position. The distance to the nearest wall is used to calculate the projected wall height.
-3. **Object Renderer** — Wall columns are sliced from the appropriate texture and scaled based on depth, then drawn to the screen.
-4. **Player** — Moves and rotates in the 2D map space, with a configurable FOV and movement speed.
-5. **Fisheye Correction** — Applied to remove the distortion caused by straight-line raycasting.
-
- ---
-  
-## Map Format
- 
-The map is defined as a 2D list in `map.py`. Each value represents:
- 
-| Value | Meaning |
-|-------|---------|
-| `0` | Empty space (walkable) |
-| `1–5` | Wall with corresponding texture |
- 
-Example:
-```python
-mini_map = [
-    [1, 1, 1, 1, 1],
-    [1, 0, 0, 0, 1],
-    [1, 0, 2, 0, 1],
-    [1, 0, 0, 0, 1],
-    [1, 1, 1, 1, 1],
-]
-```
- 
----
- 
-## Configuration
- 
-All global settings are in `settings.py`:
- 
-```python
-# Screen
-WIDTH, HEIGHT = 1600, 900
-FPS = 60
- 
-# Player
-PLAYER_SPEED = 0.004
-PLAYER_ROT_SPEED = 0.002
-FOV = math.pi / 3  # 60 degrees
- 
-# Raycasting
-NUM_RAYS = WIDTH // 2
-MAX_DEPTH = 20
- 
-# Textures
-TEXTURE_SIZE = 256
-SCALE = WIDTH // NUM_RAYS
-```
- 
----
- 
-## Textures
- 
-Wall textures are stored in `resources/textures/` and named `1.png` through `5.png`, matching the map cell values. Textures must be square images — the default resolution is `256x256`.
-
-All textures were downloaded from https://spritedatabase.net
- 
 ---
 
-## Roadmap
+## 🚀 Getting Started
  
-- [x] Raycasting engine
-- [x] Textured wall
-- [x] 3D Projection
-- [x] Player movement and rotation
-- [x] Texturing the level
-- [ ] Sprite objects
-- [ ] Weapons
-- [ ] Enemies with AI
-- [ ] Collision detection improvements
-- [ ] Minimap HUD
-- [ ] Sound effects and music
-- [ ] Interactive Gameplay
+### Prerequisites
+ 
+- Python 3.10+
+- pip
+ 
+### Installation
+ 
+```bash
+# Clone the repository
+git clone https://github.com/alvarogope/FPS-Retro-Doom-Game.git
+cd FPS-Retro-Doom-Game
+ 
+# Install dependencies
+pip install pygame
+```
+ 
+### Run
+ 
+```bash
+python main.py
+```
+ 
+### Controls
+ 
+| Key | Action |
+|---|---|
+| W / S | Move forward / backward |
+| A / D | Rotate left / right |
+| ESC | Quit |
+
+---
+
+## 🛠️ Tech Stack
+ 
+| | |
+|---|---|
+| Language | Python 3 |
+| Rendering | Custom raycasting engine (no game engine used) |
+| Framework | Pygame |
+| Technique | DDA (Digital Differential Analyser) ray-wall intersection |
