@@ -20,11 +20,11 @@ A Doom-style raycasting engine built from scratch in Python using Pygame. The en
 ## 🔨 In Progress
  
 - 👾 Sprites and enemies with AI
-- 🔫Weapons
+- 🔫 Weapons
 - 🗺️ Minimap overlay
 - 🔊 Sound effects and Music
-- 💥:Collision detection improvements
-- 🎮Interactive gameplay
+- 💥 Collision detection improvements
+- 🎮 Interactive gameplay
 - 🔊 Sound effects and Music
 
 ---
